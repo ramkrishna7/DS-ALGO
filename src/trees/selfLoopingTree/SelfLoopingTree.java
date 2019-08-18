@@ -6,35 +6,35 @@ public class SelfLoopingTree {
     public static void main(String[] args) {
         SelfLoopingTree selfLoopingTree = new SelfLoopingTree();
         selfLoopingTree.buildSelfLoopingTree();
-        selfLoopingTree.performInorderTraversal(selfLoopingTree.root);
+        selfLoopingTree.inorderTraversal(selfLoopingTree.root);
     }
 
-    public void performInorderTraversal(TreeNode node) {
-        if (isMiddleLeafNode(node) || isExtremeLeftLeafNode(node) || isExtremeRightLeafNode(node)) {
+    public void inorderTraversal(TreeNode node) {
+        if (isIntermediaryLeafNode(node) || isLeftmostLeafNode(node) || isRightmostLeafNode(node)) {
             printNodeValue(node);
             return;
         }
 
         if (node.getLeft() != node) {
-            performInorderTraversal(node.getLeft());
+            inorderTraversal(node.getLeft());
         }
 
         printNodeValue(node);
 
         if (node.getRight() != node) {
-            performInorderTraversal(node.getRight());
+            inorderTraversal(node.getRight());
         }
     }
 
-    private boolean isExtremeLeftLeafNode(TreeNode node) {
+    private boolean isLeftmostLeafNode(TreeNode node) {
         return node.getLeft() == node && node.getRight().getLeft() == node;
     }
 
-    private boolean isExtremeRightLeafNode(TreeNode node) {
+    private boolean isRightmostLeafNode(TreeNode node) {
         return node.getRight() == node && node.getLeft().getRight() == node;
     }
 
-    private boolean isMiddleLeafNode(TreeNode node) {
+    private boolean isIntermediaryLeafNode(TreeNode node) {
         return node.getLeft().getRight() == node && node.getRight().getRight() == node;
     }
 
