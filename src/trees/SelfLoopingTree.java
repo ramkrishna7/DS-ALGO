@@ -1,4 +1,4 @@
-package selfLoopingTree;
+package trees;
 
 public class SelfLoopingTree {
     private TreeNode root;
